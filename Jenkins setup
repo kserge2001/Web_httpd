@@ -1,0 +1,26 @@
+#!/bin/bash
+yum install java-1.7.0-openjdk
+echo "checking the java version, please wait"
+echo
+sleep 2
+java -version
+sleep 2
+echo "now donloading jenkins"
+sleep
+echo
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+echo
+echo "extracting the package"
+sleep 2
+echo
+rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+echo
+echo "installing jenkins"
+echo
+sleep 2
+yum install jenkins
+service jenkins start
+chkconfig jenkins on
+echo "-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT" >> /etc/sysconfig/iptables
+sleep 2
+echo "done"
