@@ -1,4 +1,5 @@
 #!/bin/bash
+echo " Installing Java now"
 yum install java-1.7.0-openjdk
 echo "checking the java version, please wait"
 echo
